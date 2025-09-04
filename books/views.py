@@ -1,13 +1,23 @@
 from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404
+from .models import Book
+
 
 def book_ru(request):
-    return HttpResponse("Русская литература знаменита своими глубокими философскими произведениями, такими как 'Война и мир' Льва Толстого, 'Преступление и наказание' Фёдора Достоевского и 'Мастер и Маргарита' Михаила Булгакова, которые исследуют судьбу человека, мораль и смысл жизни.")
+    return HttpResponse("Русская литература знаменита своими глубокими философскими произведениями, такими как 'Война и мир' Толстого, 'Преступление и наказание' Достоевского и 'Мастер и Маргарита' Булгакова.")
 
 def book_en(request):
-    return HttpResponse("English literature известна своим разнообразием и классикой, включая 'Harry Potter' Дж. К. Роулинг, 'The Adventures of Sherlock Holmes' Артура Конан Дойля и 'Pride and Prejudice' Джейн Остин, которые отражают воображение, загадки и социальные отношения.")
+    return HttpResponse("English literature известна своим разнообразием и классикой, включая 'Harry Potter' Роулинг, 'Sherlock Holmes' Конан Дойля и 'Pride and Prejudice' Джейн Остин.")
 
 def book_usa(request):
-    return HttpResponse("American literature часто обращается к теме свободы и мечты, примеры — 'The Great Gatsby' Фрэнсиса Скотта Фицджеральда, 'To Kill a Mockingbird' Харпер Ли и 'Moby-Dick' Германа Мелвилла, где поднимаются вопросы справедливости, природы человека и американской мечты.")
+    return HttpResponse("American literature часто обращается к теме свободы и мечты, например, 'The Great Gatsby' Фицджеральда, 'To Kill a Mockingbird' Харпер Ли и 'Moby-Dick' Мелвилла.")
 
 
-# Create your views here.
+def book_list(request):
+    books = Book.objects.all()
+    return render(request, "books/book_list.html", {"books": books})
+
+def book_detail(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    return render(request, "books/book_detail.html", {"book": book})
+
