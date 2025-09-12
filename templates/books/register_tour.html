@@ -1,0 +1,6 @@
+<h1>Регистрация на тур: {{ tour.name }}</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Записаться</button>
+</form>

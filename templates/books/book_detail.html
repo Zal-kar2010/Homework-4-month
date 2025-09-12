@@ -1,0 +1,21 @@
+<h1>{{ book.title }}</h1>
+<p>{{ book.description }}</p>
+<h2>Отзывы:</h2>
+<ul>
+  {% for review in reviews %}
+    <li>
+      <strong>{{ review.user.username }}</strong> ({{ review.rating }}★): {{ review.comment }}
+    </li>
+  {% empty %}
+    <li>Нет отзывов</li>
+  {% endfor %}
+</ul>
+{% if user.is_authenticated %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Оставить отзыв</button>
+  </form>
+{% else %}
+  <p>Войдите, чтобы оставить отзыв.</p>
+{% endif %}
