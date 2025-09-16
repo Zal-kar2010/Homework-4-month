@@ -3,6 +3,11 @@ from django.contrib.auth.forms import UserCreationForm
 from captcha.fields import CaptchaField  # Используем django-simple-captcha
 from .models import CustomUser
 
+class MyForm(forms.Form):
+    name = forms.CharField(max_length=100)
+    captcha = CaptchaField()
+
+
 class CustomUserCreationForm(UserCreationForm):
     phone_number = forms.CharField(max_length=15, required=False)
     date_of_birth = forms.DateField(required=False)
