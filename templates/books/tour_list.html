@@ -1,0 +1,6 @@
+<h1>Список туров</h1>
+<ul>
+  {% for tour in tours %}
+    <li>{{ tour.name }} - {{ tour.description }}</li>
+  {% endfor %}
+</ul>

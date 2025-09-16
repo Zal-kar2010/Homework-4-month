@@ -1,0 +1,6 @@
+<h1>Изменить заказ №{{ form.instance.id }}</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Обновить</button>
+</form>

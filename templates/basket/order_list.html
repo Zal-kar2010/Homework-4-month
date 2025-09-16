@@ -1,0 +1,13 @@
+<h1>Список заказов</h1>
+<a href="{% url 'create_order' %}">Создать новый заказ</a>
+<ul>
+    {% for order in orders %}
+        <li>
+            Заказ №{{ order.id }} от {{ order.name }} (Книга: {{ order.book.title }}) - Статус: {{ order.status }}
+            <a href="{% url 'update_order' order.pk %}">Изменить</a>
+            <a href="{% url 'delete_order' order.pk %}">Удалить</a>
+        </li>
+    {% empty %}
+        <li>Заказов пока нет.</li>
+    {% endfor %}
+</ul>
