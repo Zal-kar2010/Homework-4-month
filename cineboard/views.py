@@ -121,5 +121,3 @@ class AddCommentView(LoginRequiredMixin, generic.View):
             comment.save()
         return redirect('cineboard:film_detail', pk=pk)
     
-def login_cine(request):
-    return render(request, 'login_cine.html')
