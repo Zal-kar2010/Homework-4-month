@@ -1,0 +1,13 @@
+<h1>TODO</h1>
+<ol>
+  <a href="{% url 'create_todo' %}">Добавить Задачу</a>
+  {% for i in todo %}
+  <li>
+    <h2>{{ i.title }}</h2>
+    <p>{{ i.created_at }}</p>
+    <p>{{ i.choice_type }}</p>
+    <a href="/delete_todo/{{i.id}}/">Удалить Задачу</a>
+    <a href="/update_todo/{{i.id}}/">Изменить Задачу</a>
+  </li>
+  {% endfor %}
+</ol>

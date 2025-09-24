@@ -1,0 +1,19 @@
+    <h2>{{ blog_id.title }}</h2>
+    <img src="{{ blog_id.images.url }}" alt="" width="400" height="350">
+    <p>{{ blog_id.description }}</p>
+    <a href="{{ blog_id.link_blog}}" target="_blank">перейти на страницу</a>
+    <p>{{ blog_id.category_blog }}</p>
+    <iframe src="{{ blog_id.video_url }}" frameborder="0"></iframe>
+    <p>{{ blog_id.created_at }}</p>
+
+    <h2>Комменты</h2>
+    <ol>
+  {% for i in blog_id.post.all %}
+
+  <li>
+    <h3>{{ i.stars }}</h3>
+    <p>{{ i.text }}</p>
+  </li>
+
+  {% endfor %}
+</ol>

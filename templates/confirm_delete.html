@@ -1,0 +1,6 @@
+<form method="POST">
+    {% csrf_token %}
+    <h1>Вы действительно хотите удалить эту задачу?</h1>
+    <button type="submit">Да</button>
+</form>
+<a href="{% url 'todo_list' %}">Назад</a>
